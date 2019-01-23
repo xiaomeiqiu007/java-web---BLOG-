@@ -1,0 +1,108 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我的博客</title>
+	<style type="text/css">
+		/*
+			书写css文件
+		*/
+		#register,#login{
+			width:300px;
+			height:300px;
+			/*背景颜色*/
+			background-color: skyblue;
+			/*
+				背景图片
+				background-image:url("http://d.hiphotos.baidu.com/image/h%3D300/sign=636760ba04f79052f01f413e3cf2d738/caef76094b36acaf6d1e855571d98d1000e99c98.jpg");
+			*/
+			/*外边距，两个盒子之间的间距*/
+			margin: 10px;
+		}
+		
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			/*
+				弹性容器是由两个轴组成，一个轴是主轴（控制内容的排列方向,默认为水平 row），另一个轴是交叉轴
+				使用的步骤：
+					1.先设置弹性容器		display: flex;
+					2.设置主轴方向			flex-direction: row/column;
+					3.设置主轴方向排列方式	justify-content: center;
+					4.设置交叉轴方向排列方式 	align-items: center;
+			*/
+			display:flex;
+			/*
+				flex-direction: column;
+			*/
+			justify-content:center;
+			align-items: center;
+		}
+		
+		form{
+			/*background-color: pink;*/
+			height:215px;
+			display:flex;
+			/*更改主轴方向为垂直*/
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+		}
+		input{
+			width: 80%;
+			height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<!--
+		注册页面：
+	 
+		页面中展示的内容 需要书写在body标记中
+		
+	 -->
+	 <div id="register">
+	 	<h1>注册博客</h1>
+	 	<form action="Register" method="POST">
+	 		<input type="text" name="username" id="un" placeholder="请输入你的用户名">
+	 		
+	 		<input type="password" name="password" id="pwd" placeholder="请输入你的密码">
+	 		
+	 		<input type="password" name="pwdagain" id="pwdagain" placeholder="请再次输入你的密码">
+	 		
+	 		<input type="submit" value="注册">
+	 		
+	 		<a href="login.html">已经有账号，去登录</a>
+	 	</form>
+	 </div>
+	 
+	 
+	 <script>
+	 	/*获取注册按钮  
+	 		通过选择器获取标记
+	 		document.querySelector('选择器');
+	 		eg:document.querySelector('#pwdagain');
+	 	*/
+	 	var submitBtn = document.querySelector('[type="submit"]');
+	 	/*
+	 		监听submitBtn的点击事件
+	 	*/
+	 	submitBtn.onclick = function(e){
+	 		/*
+	 			阻止提交
+	 			e.preventDefault();
+	 		*/
+	 		/*用户名和密码不能为空,并且两次密码要一致*/
+	 		var username = document.querySelector('#un').value;
+	 		var password1 = document.querySelector('#pwd').value;
+	 		var password2 = document.querySelector('#pwdagain').value;
+	 		if (username.length == 0 || password1.length == 0 || password1 != password2){
+	 			e.preventDefault();
+	 		}
+	 	}
+	 	
+	 </script>
+</body>
+</html>
